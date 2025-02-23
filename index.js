@@ -1,21 +1,38 @@
 import express from 'express';
+import cors from 'cors';
+import { integration } from './api/integration.js';
+import Tick from './api/tick.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(cors())
 app.use(express.json());
-
 
 app.get('/', (req, res) => {
     res.status(200).json({
-        "email": "ugbewijc@gmail.com",
-        // "current_datetime": new Date().toISOString().split('.')[0] + 'Z',
-        // "github_url": "https://github.com/ugbewijc/telex_vercel"
+        "message": "Welcome to Vercel Telex Integration",
     });
+})
+
+app.get('/integration.json', (req, res) => {
+    const data = integration?.data;
+    res.status(200).json({
+        data
+    })
+})
+
+app.get('/tick', Tick.tick)
+
+app.get('/integration', (req, res) => {
+    const data = integration?.data;
+    res.status(200).json({
+        data
+    })
 })
 
 app.use((req, res, next) => {
     res.status(404).json({ data: 'Not Found' });
-  });
+});
 
 app.listen(PORT, () => {
     console.log(`app listening on port ${PORT}`)
