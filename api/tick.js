@@ -6,6 +6,11 @@ export default class Tick {
     constructor() { }
 
     static async tick(req, res) {
+        if(!process.env.VERCEL_TOKEN) {
+            return res.status(401).json({
+                "message": "Unauthorized: VERCEL TOKEN is required"
+            })
+        }
         const vercel = new Vercel({
             bearerToken: process.env.VERCEL_TOKEN
         });

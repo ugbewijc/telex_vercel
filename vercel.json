@@ -4,7 +4,20 @@
       {
         "src": "index.js",
         "use": "@vercel/node"
+      },
+      {
+        "src": "api/integration.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/tick.js",
+        "use": "@vercel/node"
       }
-    ]
+    ],
+    "rewrites": [
+      { 
+        "source": "/(.*)", "destination": "/index.js" 
+      }
+    ] 
   }
   
