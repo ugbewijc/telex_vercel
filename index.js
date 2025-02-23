@@ -14,21 +14,11 @@ app.get('/', (req, res) => {
     });
 })
 
-app.get('/integration.json', (req, res) => {
-    const data = integration?.data;
-    res.status(200).json({
-        data
-    })
-})
+app.get('/integration.json', integration)
 
-app.get('/tick', Tick.tick)
+app.post('/tick', Tick.tick)
 
-app.get('/integration', (req, res) => {
-    const data = integration?.data;
-    res.status(200).json({
-        data
-    })
-})
+app.get('/integration', integration)
 
 app.use((req, res, next) => {
     res.status(404).json({ data: 'Not Found' });

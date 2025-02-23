@@ -1,5 +1,7 @@
-export const integration = {
-    "data": {
+export const integration = (req, res) => {
+  const protocol = req.protocol;
+  const host = req.get('host');
+  const data= {
       "date": {
         "created_at": "2025-02-22",
         "updated_at": "2025-02-22"
@@ -7,19 +9,13 @@ export const integration = {
       "descriptions": {
         "app_description": "Automated Performance Monitoring system that tracks server performace that host an application on vercel",
         "app_logo": "https://avatars.githubusercontent.com/u/10807055?v=4.",
-        "app_name": "Vercel Performance Integrator.",
-        "app_url": "https://telex-vercel.vercel.app",
+        "app_name": "Vercel Server Performance Integrator.",
+        "app_url": `${protocol}://${host}`,//"https://telex-vercel.vercel.app"
         "background_color": "#HEXCODE"
       },
       "integration_category": "Monitoring & Logging",
       "integration_type": "interval",
-      "is_active": false,
-      "output": [
-        {
-          "label": "vercel_performance",
-          "value": true
-        }
-      ],
+      "is_active": true,
       "key_features": [
         "Latest performance data.",
         "Deployments details.",
@@ -31,20 +27,13 @@ export const integration = {
     //     }
     //   },
       "settings": [
-        {
-          "label": "interval",
-          "type": "text",
-          "required": true,
-          "default": "* * * * *"
-        },
-        {
-          "label": "Vercel Token",
-          "type": "text",
-          "required": true,
-          "default": ""
-        }
+        {"label": "interval", "type": "text", "required": true, "default": "* * * * *"},
+        {"label": "vercel token", "type": "text", "required": true, "default": ""}
       ],
-      "tick_url": "https://telex-vercel.vercel.app/tick",
+      "tick_url": `${protocol}://${host}/tick`,//"https://telex-vercel.vercel.app/tick",
       "target_url": "",//Optional URL for getting data from the Telex channel
     }
+    res.status(200).json({
+      data
+    })
   }
