@@ -45,6 +45,6 @@ export const integration = {
         }
       ],
       "tick_url": "https://telex-vercel.vercel.app/tick",
-    //   "target_url": "Optional URL for getting data from the Telex channel"
+      "target_url": "",//Optional URL for getting data from the Telex channel
     }
   }
