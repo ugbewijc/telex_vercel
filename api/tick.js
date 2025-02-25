@@ -9,7 +9,7 @@ export default class Tick {
         try {
             let token;
             for (const setting of settings) {
-                if (setting.label === 'vercel token') {
+                if (setting.label.toLowerCase() === 'vercel token') {
                     token = setting.default
                 }
             }
