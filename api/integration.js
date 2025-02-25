@@ -18,7 +18,7 @@ export const integration = (req, res) => {
       "is_active": true,
       "key_features": [
         "Latest performance data.",
-        "Deployments details.",
+        "Latest Deployments Details.",
       ],
     //   "permissions": {
     //     "monitoring_user": {
